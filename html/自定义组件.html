@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../resources/css/theme-classic-all.css" rel="stylesheet">
+    <script src="../resources/js/ext-all.js"></script>
+
+    <script type="text/javascript">
+      
+      Ext.onReady(function(){
+        
+        Ext.define('Ext.ux.Image',{
+          renderTo:Ext.getBody(),
+          extend:'Ext.Component',
+          alias:'dom.img',
+          autoEl:{
+            tag:'img',
+            src:'https://img10.360buyimg.com/n7/jfs/t1/120469/31/1674/119914/5ebe653bEa909b1d4/0f93c56f0f267a06.jpg',
+            cls:'my-managed-image'
+          },
+          onRender:function(){
+            this.autoEl = Ext.apply({},this.initialConfig,this.autoEl);
+            this.callParent(arguments);
+            this.el.on('load',this.onLoad,this);
+          },
+          onLoad:function(){
+            this.fireEvent('load',this)
+          },
+          setSrc:function(src){
+            if(this.rendered){
+              this.el.dom.src = src;
+            }else{
+              this.src = src
+            }
+          },
+          getSrc:function(){
+            return this.el.dom.src||this.src;
+          }
+        })
+        var a = Ext.create('Ext.ux.Image','https://img10.360buyimg.com/n7/jfs/t1/120469/31/1674/119914/5ebe653bEa909b1d4/0f93c56f0f267a06.jpg')
+        console.log(a.getSrc())
+      }); 
+      
+     </script>
+     
+  </head>
+  <body>
+     
+</body>
+</html>

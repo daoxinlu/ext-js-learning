@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../resources/css/theme-classic-all.css"> -->
+    <!-- <link href="../resources/css/theme-classic-all.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../ext\build\classic\theme-classic\resources\theme-classic-all.css">
+    <script src="../resources/js/ext-all.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // Ext.onReady(function(){
+      //   Ext.create('Ext.Button',{
+      //   renderTo:Ext.getBody(),
+      //   text:'hello world xxx',
+      //   listeners:{
+      //     mouseover:function(){
+      //       this.hide()
+      //     },
+      //     hide:function(){
+      //       Ext.defer(function(){
+      //         this.show();
+      //       },1000,this);
+      //     }
+      //   }
+      // })
+      var doSomething = function() {
+      Ext.Msg.alert('Success!', 'listener called');
+      };
+      var button = Ext.create('Ext.Button', {
+      renderTo: Ext.getBody(),
+      text: 'My Button',
+      listeners: {
+      // click:{
+      //   buffer:1000,
+      //   fn:doSomething,
+      //   // single:true,
+        
+      // } ,
+        myEvent:function(button){
+        Ext.Msg.alert('success',1);   //还有标题艹
+        
+      }
+      }
+      });
+      Ext.defer(function() {
+      // button.un('click', doSomething);
+        button.fireEvent('myEvent',button)
+      },1000);
+
+      // })
+      
+      
+     </script>
+     
+
+     
+</body>
+</html>

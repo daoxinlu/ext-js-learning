@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../resources/css/theme-classic-all.css" rel="stylesheet">
+    <script src="../resources/js/ext-all.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+      Ext.create('Ext.tab.Panel', {
+      renderTo: Ext.getBody(),
+      height: 100,
+      width: 200,
+      items: [{
+      // Explicitly define the xtype of this Component configuration.
+      // This tells the Container (the tab panel in this case)
+      // to instantiate a Ext.panel.Panel when it deems necessary
+      xtype: 'panel',
+      title: 'Tab One',
+      html: 'The first tab',
+      listeners: {
+      render: function() {
+      alert('Rendered One', 'Tab One was rendered.');
+      }}},{
+// xtype for all Component configurations in a Container
+         title: 'Tab Two',
+         html: 'The second tab',
+         listeners: {
+         render: function() {
+           window.alert('Rendered One', 'Tab Two was rendered.');
+         }
+         }
+         }]
+         });
+      // Ext.onReady(function() { 
+      //    window.alert('提示', '逗号分隔参数列表'); //这种方式非常常见的 
+      // }); 
+     </script>
+     
+  </head>
+  <body>
+     
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../resources/css/theme-classic-all.css" rel="stylesheet">
+    <script src="../resources/js/ext-all.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实现嵌套盒子
+        var containerPanel = Ext.create('Ext.panel.Panel', {
+            renderTo: Ext.getBody(),
+            width: 400,
+            height: 300,
+            title: 'Container Panel',
+            layout: 'column',
+            x:100,
+            y:200,
+            // html:'hello world',
+            // suspendLayout: true // Suspend automatic layouts while we do several
+                                //different things that could trigger a layout on their own
+        });
+            // Add a couple of child items. We could add these both at the same time
+            //by passing an array to add(),
+            // but lets pretend we needed to add them separately for some reason.
+        var com2 = {
+            xtype: 'panel',
+            title: 'Child Panel 2',
+            height: 100,
+            layout:'column',
+            left:100,
+            columnWidth: 0.5,
+            items:[{
+                title:'child child 1',
+                width:100,
+                height:50,
+                html:'child 1 of child 2',
+
+            }]
+            
+        }
+        var com1 = Ext.create('Ext.panel.Panel',{
+            renderTo:Ext.getBody(),
+            xtyle:'panel',
+            title:'Child Panel 1',
+            width:200,
+            height:200,
+            layout:'column',
+            columnWidth:0.6,
+            // suspendLayout:true
+        })
+        com1.add(com2)
+        // com1.suspendLayout = false;
+        // com1.updateLayout();
+        containerPanel.add(com1);
+        // containerPanel.suspendLayout = false;
+        // containerPanel.updateLayout();
+    </script>
+</body>
+</html>

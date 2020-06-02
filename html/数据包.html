@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../resources/css/theme-classic-all.css" rel="stylesheet">
+    <script src="../resources/js/ext-all.js"></script>
+    <script type="text/javascript">
+      // Ext.define('MyApp.model.Base',{
+      //   extend:'Ext.data.Model',
+      //   fields:[{
+      //     name:'id',
+      //     type:'int',
+      //   }]
+      // })
+      // new Ext.data.Store({
+      //   model: 'MyApp.model.User',
+      //   data: [{
+      //   id: 1,
+      //   name: "Philip J. Fry"
+      //   },{
+      //   id: 2,
+      //   name: "Hubert Farnsworth"
+      //   },{
+      //   id: 3,
+      //   name: "Turanga Leela"
+      //   },{
+      //   id: 4,
+      //   name: "Amy Wong"
+      // }]
+      // })
+      Ext.define('MyApp.model.User',{
+        extend:'Ext.data.Store',
+        alias:'store.users',
+        proxy:{
+          type:'ajax',
+          url:'loadUsers.action',
+          reader:{
+            type:'json',
+            rootProperty:'list'
+          }
+        },
+        fields:[
+          'company',
+          {name:'price',type:'float'}
+        ],
+        data:[
+          ['3m Co',71.72,0.02,0.03,'9/1 12:00am'],
+          ['Alcoa Inc',29.01,0.42,1.47,'9/1 12:00am'],
+          ['Boeing Co.',75.43,0.53,0.71,'9/1 12:00am'],
+          ['Hewlett-Packard Co.',36.53,-0.03,-0.08,'9/1 12:00am'],
+          ['Wal-Mart Stores, Inc.',45.45,0.73,1.63,'9/1 12:00am']
+        ],validators:{
+          name:[
+            'presence',
+            {type:'length',min:7}
+          ]
+        }
+      })
+      var store = Ext.create('MyApp.model.User')
+      store.load({
+        callback:function(){
+          console.log(this)
+        }
+      })
+      
+     </script>
+     
+  </head>
+  <body>
+     
+</body>
+</html>
